@@ -8,8 +8,8 @@ def getFtpPublishProfile(def publishProfilesJson) {
 }
 
 node {
-  withEnv(['AZURE_SUBSCRIPTION_ID=<subscription_id>',
-        'AZURE_TENANT_ID=<tenant_id>']) {
+  withEnv(['AZURE_SUBSCRIPTION_ID=da74e3ed-9c9a-4605-8fae-10f3492c0f5c',
+        'AZURE_TENANT_ID=9b415834-803a-4da0-afdc-fe6b1d52d649']) {
     stage('init') {
       checkout scm
     }
@@ -19,10 +19,10 @@ node {
     }
   
     stage('deploy') {
-      def resourceGroup = '<resource_group>'
-      def webAppName = '<app_name>'
+      def resourceGroup = 'UPS-WMP-DEV_RG'
+      def webAppName = 'wechatdevstatic'
       // login Azure
-      withCredentials([usernamePassword(credentialsId: '<service_princial>', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
+      withCredentials([usernamePassword(credentialsId: 'UPS-WMP-DEV-AKSSP-20210122150559', passwordVariable: '7wAl2H2.1PhShUWB96Y_j-2q1S8.xr9k2n', usernameVariable: 'ca2523dd-04e0-4752-8f8d-bb55882f334c')]) {
        sh '''
           az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
           az account set -s $AZURE_SUBSCRIPTION_ID
