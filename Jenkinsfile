@@ -22,7 +22,7 @@ node {
       def resourceGroup = 'UPS-WMP-DEV_RG'
       def webAppName = 'wechatdevstatic'
       // login Azure
-      withCredentials([usernamePassword(credentialsId: 'ca2523dd-04e0-4752-8f8d-bb55882f334c', passwordVariable: '7wAl2H2.1PhShUWB96Y_j-2q1S8.xr9k2n', usernameVariable: 'ca2523dd-04e0-4752-8f8d-bb55882f334c')]) {
+      withCredentials([usernamePassword(credentialsId: 'ca2523dd-04e0-4752-8f8d-bb55882f334c', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
        sh '''
           az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
           az account set -s $AZURE_SUBSCRIPTION_ID
